@@ -9,7 +9,7 @@ function game() {
     gameArea.innerHTML = '';
 
     for (let i = 0; i < 10; i++) {
-        const isGreen = Math.random() > 0.2;
+        const isGreen = Math.random() > 0.3;
         boxes.push({
             x: Math.random() * (gameArea.offsetWidth - 50),
             y: Math.random() * (gameArea.offsetHeight - 50),
@@ -18,6 +18,7 @@ function game() {
             color: isGreen ? 'green' : 'red'
         });
     }
+
     for (let i = 0; i < boxes.length; i++) {
         setTimeout(function () {
             const box = boxes[i];
@@ -36,9 +37,7 @@ function game() {
             const timeOutId = setTimeout(function () {
                 div.classList.remove('show');
                 div.classList.add('hide');
-                setTimeout(() => {
-                    if (div.parentNode) div.remove();
-                }, 500);
+                setTimeout(() => div.remove(), 500);
             }, 2000);
 
             div.addEventListener('click', function () {
@@ -62,13 +61,20 @@ function game() {
     }, (boxes.length + 1) * 1000 + 2000);
 }
 
-function startGame() {
-    const button = document.getElementById('startButton');
-    button.addEventListener('click', function () {
-        button.style.display = 'none';
-        document.getElementById('scoreBoard').textContent = 'Score: 0';
+function setupButtons() {
+    const startButton = document.getElementById('startButton');
+    const playAgainButton = document.getElementById('playAgainButton');
+
+    startButton.addEventListener('click', function () {
+        startButton.style.display = 'none';
+        playAgainButton.style.display = 'none';
+        game();
+    });
+
+    playAgainButton.addEventListener('click', function () {
+        playAgainButton.style.display = 'none';
         game();
     });
 }
 
-window.onload = startGame;
+window.onload = setupButtons;
