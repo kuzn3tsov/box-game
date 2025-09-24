@@ -9,7 +9,7 @@ function game() {
     gameArea.innerHTML = '';
 
     for (let i = 0; i < 10; i++) {
-        const isGreen = Math.random() > 0.5;
+        const isGreen = Math.random() > 0.2;
         boxes.push({
             x: Math.random() * (gameArea.offsetWidth - 50),
             y: Math.random() * (gameArea.offsetHeight - 50),
@@ -58,7 +58,6 @@ function game() {
     }
 
     setTimeout(function () {
-        alert('Game over! Your score is: ' + score);
         document.getElementById('playAgainButton').style.display = 'inline-block';
     }, (boxes.length + 1) * 1000 + 2000);
 }
