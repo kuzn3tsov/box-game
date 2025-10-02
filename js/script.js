@@ -42,7 +42,9 @@ function game() {
 
             div.addEventListener('click', function () {
                 if (box.color === 'green') {
-                    score++;
+                    score += 2;
+                } else if (box.color === 'red') {
+                    score -=2;
                 } else {
                     score--;
                 }
@@ -79,3 +81,4 @@ function setupButtons() {
 
 
 window.onload = setupButtons;
+
