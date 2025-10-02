@@ -1,5 +1,6 @@
 function game() {
     const boxes = [];
+    const numberOfBoxes = 50;
     let score = 0;
 
     const scoreBoard = document.getElementById('scoreBoard');
@@ -8,7 +9,7 @@ function game() {
     scoreBoard.textContent = 'Score: 0';
     gameArea.innerHTML = '';
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < numberOfBoxes; i++) {
         const isGreen = Math.random() > 0.5;
         boxes.push({
             x: Math.random() * (gameArea.offsetWidth - 50),
@@ -42,9 +43,7 @@ function game() {
 
             div.addEventListener('click', function () {
                 if (box.color === 'green') {
-                    score += 2;
-                } else if (box.color === 'red') {
-                    score -=2;
+                    score--;
                 } else {
                     score--;
                 }
@@ -81,4 +80,5 @@ function setupButtons() {
 
 
 window.onload = setupButtons;
+
 
