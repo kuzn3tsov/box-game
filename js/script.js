@@ -9,7 +9,7 @@ function game() {
     gameArea.innerHTML = '';
 
     for (let i = 0; i < 10; i++) {
-        const isGreen = Math.random() > 0.3;
+        const isGreen = Math.random() > 0.5;
         boxes.push({
             x: Math.random() * (gameArea.offsetWidth - 50),
             y: Math.random() * (gameArea.offsetHeight - 50),
@@ -76,5 +76,6 @@ function setupButtons() {
         game();
     });
 }
+
 
 window.onload = setupButtons;
